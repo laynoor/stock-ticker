@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Ticker</title>
+</head>
+<body>
+    <script>
+        const url = location.href;
+    const urlObject = new URL(url);
+    const params = new URLSearchParams(urlObject.search);
+    const search = params.get("search");
+    const choice = params.get("choice");
+    console.log("search,choice",search,choice);
+    const getResults = async () => {
+        const res = await fetch(`/query?search=${encodeURI(search)}&choice=${choice}`,{
+            method:"GET",
+        })
+        const resJSON = await res.json();
+        console.log(resJSON);
+    }
+    getResults();
+    </script>
+</body>
+</html>
