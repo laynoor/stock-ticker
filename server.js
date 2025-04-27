@@ -18,6 +18,7 @@ app.get("/query", async (req,res) => {
 const run = async() => {
     await client.connect();
     app.listen(process.env.PORT || 3000, () => {
+        console.log(process.env.PORT)
         console.log("App is listening.")
     })
 }
