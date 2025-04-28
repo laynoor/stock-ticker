@@ -7,7 +7,9 @@ app.use(express.json());
 app.use(express.static("public"));
 const run = async() => {
     try {
+        console.log("Connection to mongodb...");
     await client.connect();
+        console.log("Connected to mongodb.");
     const db = client.db("Stock");
     const col = db.collection("PublicCompanies");
     
@@ -25,7 +27,8 @@ const run = async() => {
     });
     } catch(err){
         console.error("Startup error: ",err);
-    };
+        process.exit(1);
+    }
     };
 run();
 
