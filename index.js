@@ -6,6 +6,7 @@ const client = new MongoClient(mongourl);
 app.use(express.json());
 app.use(express.static("public"));
 const run = async() => {
+    try {
     await client.connect();
     const db = client.db("Stock");
     const col = db.collection("PublicCompanies");
@@ -22,6 +23,9 @@ const run = async() => {
         console.log(process.env.PORT);
         console.log("App is listening.");
     });
+    } catch(err){
+        console.error("Startup error: ",err);
+    };
     };
 run();
 
