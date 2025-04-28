@@ -2,6 +2,7 @@ const express = require("express");
 const {MongoClient} = require("mongodb");
 const mongourl = "mongodb+srv://new_user:zoo44321@cluster0.d0bwl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const app = express();
+const client = new MongoClient(mongourl); 
 app.use(express.json());
 app.use(express.static("public"));
 const run = async() => {
@@ -22,6 +23,5 @@ const run = async() => {
         console.log("App is listening.");
     });
     };
-    const client = new MongoClient(mongourl);
 run();
 
